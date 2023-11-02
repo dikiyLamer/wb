@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const dataController = require('./app/controllers/data.controller');
+const cardController = require('./app/controllers/card.controller');
 const db = require('./app/models/main');
 const bodyParser = require('body-parser');
 const app = express();
@@ -9,7 +9,7 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('api/data', dataController);
+app.use('/api/card', cardController);
 
 db.sequelize
     .sync({ force: true })

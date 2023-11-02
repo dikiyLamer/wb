@@ -1,5 +1,5 @@
 const express = require('express');
-const service = require('../services/data.service');
+const service = require('../services/card.service');
 const router = express.Router();
 
 router.get('/', service.getAll);
