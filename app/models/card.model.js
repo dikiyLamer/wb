@@ -2,7 +2,6 @@ module.exports = (sequelize, Sequelize) => {
     const Card = sequelize.define(
         'card',
         {
-
             updateAt: {
                 type: Sequelize.STRING,
             },
@@ -29,13 +28,11 @@ module.exports = (sequelize, Sequelize) => {
             },
             mediaFiles: {
                 type: Sequelize.ARRAY(Sequelize.STRING),
-                allowNull: false,
-                defaultValue: [],
+                allowNull: true,
             },
             tags: {
-                type: Sequelize.ARRAY(Sequelize.ARRAY(Sequelize.STRING)),
-                allowNull: false,
-                defaultValue: [],
+                type: Sequelize.ARRAY(Sequelize.STRING),
+                allowNull: true,
             },
             colors: {
                 type: Sequelize.ARRAY(Sequelize.STRING),

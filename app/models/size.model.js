@@ -7,8 +7,7 @@ module.exports = (sequelize, Sequelize) => {
             },
             skus: {
                 type: Sequelize.ARRAY(Sequelize.STRING),
-                allowNull: false,
-                defaultValue: [],
+                allowNull: true,
             },
             chrtID: {
                 type: Sequelize.INTEGER,

@@ -1,18 +1,21 @@
 const express = require('express');
 const cors = require('cors');
 const cardController = require('./app/controllers/card.controller');
+const sizeController = require('./app/controllers/size.controller');
+
 const db = require('./app/models/main');
 const bodyParser = require('body-parser');
 const app = express();
 
 app.use(cors());
-
+require('dotenv').config();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api/card', cardController);
+app.use('/api/size', sizeController);
 
 db.sequelize
-    .sync({ force: true })
+    .sync()
     .then(() => {
         console.log('Synced db.');
     })

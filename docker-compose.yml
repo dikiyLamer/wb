@@ -10,18 +10,27 @@ services:
         restart: unless-stopped
         ports:
             - 5455:5432
-    pgadmin:
-        container_name: pgadmin4_container
-        image: dpage/pgadmin4
-        restart: always
-        environment:
-            PGADMIN_DEFAULT_EMAIL: admin@admin.com
-            PGADMIN_DEFAULT_PASSWORD: admin
+    # pgadmin:
+    #     container_name: pgadmin4_container
+    #     image: dpage/pgadmin4
+    #     restart: always
+    #     environment:
+    #         PGADMIN_DEFAULT_EMAIL: admin@admin.com
+    #         PGADMIN_DEFAULT_PASSWORD: admin
+    #     ports:
+    #         - '5050:80'
+    #     volumes:
+    #         - pgadmin:/var/lib/pgadmin
+
+    back:
+        build: ./
+        #like ais_mfr_contacts/
+        command: node index.js
         ports:
-            - '5050:80'
-        volumes:
-            - pgadmin:/var/lib/pgadmin
+            - 8080:8080
+        depends_on:
+            - postgres
+        restart: always
 
 volumes:
-    pgadmin:
     postgres_back:
